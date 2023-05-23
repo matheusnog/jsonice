@@ -4,10 +4,16 @@ import { MDBFooter } from 'mdb-react-ui-kit';
 class Footer extends React.Component {
     render() {
         return (
-            <MDBFooter bgColor='light' className='text-center text-lg-left'>
+            <MDBFooter bgColor='light' className='text-center text-lg-left' style={{
+                position: 'absolute',
+                left: 0,
+                bottom: 0,
+                right: 0,
+            }}>
                 <div className='text-center p-3' style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
                     &copy; {new Date().getFullYear()} Copyright:{' '}
                     <span className='text-dark'>JSONice</span>
+                    <span className='text-dark'> - Matheus Nogueira</span>
                 </div>
             </MDBFooter>
         )

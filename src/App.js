@@ -4,11 +4,11 @@ import Navbar from './components/Navbar/Navbar';
 
 function App() {
   return (
-    <>
+    <div style={{height: '100vh'}}>
       <Navbar />
       <Content />
       <Footer />
-    </>
+    </div>
   );
 }
 
