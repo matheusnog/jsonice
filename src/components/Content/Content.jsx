@@ -28,7 +28,7 @@ const Content = () => {
 
     return (
         <>
-            <Grid direction='row' container spacing={1} style={{ minHeight: '85vh' }} className='p-3'>
+            <Grid direction='row' container spacing={1} style={{ height: '85vh' }} className='p-3'>
                 <Grid container item sm={6} className='p-3'>
                     <TextareaAutosize style={{ width: '100%', height: 'auto', overflow: 'auto', resize: 'none' }} value={json} onChange={(e) => setJson(e.target.value)} placeholder='Seu JSON aqui'/>
 
