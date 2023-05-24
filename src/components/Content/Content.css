@@ -1,0 +1,10 @@
+.h85 {
+    height: 85vh;
+}
+
+.textArea {
+    width: 100% !important;
+    height: auto !important;
+    overflow: auto !important;
+    resize: none;
+}
