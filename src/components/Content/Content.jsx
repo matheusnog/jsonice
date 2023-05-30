@@ -5,6 +5,7 @@ import { Fab, Grid, Modal, Box, Typography, List, ListItem, ListItemButton } fro
 import { JsonViewer } from '@textea/json-viewer';
 import React, { useEffect, useState } from 'react';
 import './Content.css';
+import History from '../History/History';
 
 const styleModal = {
     position: 'absolute',
@@ -22,6 +23,7 @@ const Content = () => {
     const [json, setJson] = useState('')
     const [formattedJson, setFormattedJson] = useState(null)
     const [modalOpen, setModalOpen] = useState(false)
+    const [history, setHistory] = useState('')
 
     useEffect(() => {
         try {
@@ -48,20 +50,22 @@ const Content = () => {
     }
 
     function openHistoryModal() {
+        showHistory()
         setModalOpen(true)
     }
 
-    function showHistory() {
+    function showHistory(clear = false) {
         var data = ''
         for (var i = 0; i < localStorage.length; i++) {
             data += localStorage.getItem(localStorage.key(i));
             data += " - ";
         }
-        return data;
+        setHistory(<History />)
     }
 
     function clearHistory() {
         localStorage.clear();
+        showHistory(true)
     }
 
     return (
@@ -82,19 +86,7 @@ const Content = () => {
                         </Fab>
                     </div>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        {showHistory()}
-                        <List>
-                            <ListItem>
-                                <ListItemButton
-                                    color="neutral"
-                                    disabled={false}
-                                    selected={false}
-                                    variant="soft"
-                                >
-                                    <span>Teste</span>
-                                </ListItemButton>
-                            </ListItem>
-                        </List>
+                        {history}
                     </Typography>
                 </Box>
             </Modal>
