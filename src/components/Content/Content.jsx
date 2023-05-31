@@ -1,7 +1,7 @@
 import { TextareaAutosize } from '@mui/base';
 import HistoryIcon from '@mui/icons-material/History';
 import CleaningServicesIcon from '@mui/icons-material/CleaningServices';
-import { Fab, Grid, Modal, Box, Typography, List, ListItem, ListItemButton } from '@mui/material';
+import { Fab, Grid, Modal, Box, Typography } from '@mui/material';
 import { JsonViewer } from '@textea/json-viewer';
 import React, { useEffect, useState } from 'react';
 import './Content.css';
@@ -12,7 +12,9 @@ const styleModal = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: '50%',
+    width: '90%',
+    height: '90%',
+    overflow: 'scroll',
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
@@ -54,18 +56,13 @@ const Content = () => {
         setModalOpen(true)
     }
 
-    function showHistory(clear = false) {
-        var data = ''
-        for (var i = 0; i < localStorage.length; i++) {
-            data += localStorage.getItem(localStorage.key(i));
-            data += " - ";
-        }
-        setHistory(<History />)
+    function showHistory() {
+        setHistory(<History setJson={setJson} />)
     }
 
     function clearHistory() {
         localStorage.clear();
-        showHistory(true)
+        showHistory()
     }
 
     return (
@@ -85,9 +82,9 @@ const Content = () => {
                             <CleaningServicesIcon />
                         </Fab>
                     </div>
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                    <div>
                         {history}
-                    </Typography>
+                    </div>
                 </Box>
             </Modal>
             <Grid direction='row' container spacing={1} className='p-3 h85'>
@@ -99,7 +96,7 @@ const Content = () => {
                         placeholder='Seu JSON aqui'
                     />
                 </Grid>
-                <Grid container item sm={6} className='p-3'>
+                <Grid container item sm={6} className='p-3' style={{overflow: 'scroll', maxHeight: '100%'}}>
                     <div className='d-flex align-items-center'>
                         {formattedJson && <JsonViewer value={formattedJson} />}
                     </div>
