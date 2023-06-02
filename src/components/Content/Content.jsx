@@ -33,7 +33,7 @@ const Content = () => {
 
     useEffect(() => {
         try {
-            if (json && json != '') {
+            if (json && json !== '') {
                 if (isJsonString(json)) {
                     var json_value = JSON.parse(json)
                     setFormattedJson(json_value)
@@ -70,7 +70,7 @@ const Content = () => {
     }
 
     function changeColor() {
-        if (theme == 'light') {
+        if (theme === 'light') {
             setTheme('dark')
             setbtnColor('#fff')
             setbtnBackColor('#000')
