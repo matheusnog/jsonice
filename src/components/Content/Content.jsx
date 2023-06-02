@@ -1,6 +1,7 @@
 import { TextareaAutosize } from '@mui/base';
 import HistoryIcon from '@mui/icons-material/History';
 import CleaningServicesIcon from '@mui/icons-material/CleaningServices';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
 import { Fab, Grid, Modal, Box, Typography } from '@mui/material';
 import { JsonViewer } from '@textea/json-viewer';
 import React, { useEffect, useState } from 'react';
@@ -26,6 +27,9 @@ const Content = () => {
     const [formattedJson, setFormattedJson] = useState(null)
     const [modalOpen, setModalOpen] = useState(false)
     const [history, setHistory] = useState('')
+    const [theme, setTheme] = useState('light')
+    const [btnBackColor, setbtnBackColor] = useState('#fff')
+    const [btnColor, setbtnColor] = useState('#000')
 
     useEffect(() => {
         try {
@@ -65,6 +69,18 @@ const Content = () => {
         showHistory()
     }
 
+    function changeColor() {
+        if (theme == 'light') {
+            setTheme('dark')
+            setbtnColor('#fff')
+            setbtnBackColor('#000')
+        } else {
+            setTheme('light')
+            setbtnColor('#000')
+            setbtnBackColor('#fff')
+        }
+    }
+
     return (
         <>
             <Modal
@@ -96,14 +112,17 @@ const Content = () => {
                         placeholder='Seu JSON aqui'
                     />
                 </Grid>
-                <Grid container item sm={6} className='p-3' style={{overflow: 'scroll', maxHeight: '100%'}}>
-                    <div className='d-flex align-items-center'>
-                        {formattedJson && <JsonViewer value={formattedJson} />}
-                    </div>
-                    <div className='align-items-end text-end' style={{ width: '100vh' }}>
+                <Grid container item sm={6} className='p-3' style={{ overflow: 'scroll', maxHeight: '100%' }}>
+                    <div className='align-items-end text-end' style={{ width: '100vh', marginBottom: 5 }}>
+                        <Fab color='inherit' style={{ marginRight: 5, backgroundColor: btnBackColor, color: btnColor }} aria-label="add" onClick={() => changeColor()}>
+                            <DarkModeIcon />
+                        </Fab>
                         <Fab style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }} aria-label="add" onClick={() => openHistoryModal()}>
                             <HistoryIcon />
                         </Fab>
+                    </div>
+                    <div className='d-flex align-items-center'>
+                        {formattedJson && <JsonViewer value={formattedJson} theme={theme} />}
                     </div>
                 </Grid>
             </Grid>

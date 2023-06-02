@@ -15,7 +15,7 @@ const History = ({ setJson }) => {
         setJson(localStorage.getItem(key))
     }
 
-    function removeJson(key){
+    function removeJson(key) {
         localStorage.removeItem(key)
         setArrayHistory(Object.keys(localStorage))
     }
@@ -34,7 +34,7 @@ const History = ({ setJson }) => {
                         <div>
                             <span>{localStorage.getItem(ak)}</span>
                         </div>
-                        <div style={{marginRight: 4}}>
+                        <div style={{ marginRight: 4 }}>
                             <Fab size="small" color='success' aria-label="add" onClick={() => loadJson(ak)}>
                                 <CheckIcon />
                             </Fab>
