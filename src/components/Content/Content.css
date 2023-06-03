@@ -8,3 +8,14 @@
     overflow: auto !important;
     resize: none;
 }
+
+.boxContent {
+    align-content: end !important;
+    align-items: end !important;
+    display: flex !important;
+    justify-content: space-between !important;
+}
+
+.bgGray {
+    background-color: rgba(0, 0, 0, 0.2) !important;
+}

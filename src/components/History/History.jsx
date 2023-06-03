@@ -35,12 +35,22 @@ const History = ({ setJson }) => {
                             <span>{localStorage.getItem(ak)}</span>
                         </div>
                         <div style={{ marginRight: 4 }}>
-                            <Fab size="small" color='success' aria-label="add" onClick={() => loadJson(ak)}>
+                            <Fab
+                                size="small"
+                                color='success'
+                                aria-label="add"
+                                onClick={() => loadJson(ak)}
+                            >
                                 <CheckIcon />
                             </Fab>
                         </div>
                         <div>
-                            <Fab size="small" color='error' aria-label="add" onClick={() => removeJson(ak)}>
+                            <Fab
+                                size="small"
+                                color='error'
+                                aria-label="add"
+                                onClick={() => removeJson(ak)}
+                            >
                                 <DeleteIcon />
                             </Fab>
                         </div>

@@ -90,11 +90,16 @@ const Content = () => {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={styleModal}>
-                    <div style={{ alignContent: 'end', alignItems: 'end', display: 'flex', justifyContent: 'space-between' }}>
+                    <div className='boxContent ms-4'>
                         <Typography id="modal-modal-title" variant="h6" component="h2">
                             Histórico:
                         </Typography>
-                        <Fab size="small" style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }} aria-label="add" onClick={() => clearHistory()}>
+                        <Fab
+                            size="small"
+                            className='bgGray me-4'
+                            aria-label="add"
+                            onClick={() => clearHistory()}
+                        >
                             <CleaningServicesIcon />
                         </Fab>
                     </div>
@@ -114,10 +119,20 @@ const Content = () => {
                 </Grid>
                 <Grid container item sm={6} className='p-3' style={{ overflow: 'scroll', maxHeight: '100%' }}>
                     <div className='align-items-end text-end' style={{ width: '100vh', marginBottom: 5 }}>
-                        <Fab color='inherit' style={{ marginRight: 5, backgroundColor: btnBackColor, color: btnColor }} aria-label="add" onClick={() => changeColor()}>
+                        <Fab
+                            color='inherit'
+                            style={{ marginRight: 5, backgroundColor: btnBackColor, color: btnColor }} size='small'
+                            aria-label="add"
+                            onClick={() => changeColor()}
+                        >
                             <DarkModeIcon />
                         </Fab>
-                        <Fab style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }} aria-label="add" onClick={() => openHistoryModal()}>
+                        <Fab
+                            className='bgGray'
+                            size='small'
+                            aria-label="add"
+                            onClick={() => openHistoryModal()}
+                        >
                             <HistoryIcon />
                         </Fab>
                     </div>
