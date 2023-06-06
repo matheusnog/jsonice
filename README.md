@@ -17,4 +17,5 @@ Depois de baixar o repositório, execute:
 Para instalar todos os pacotes usados no projeto.
 
 E para rodar o projeto:
-### `npm start`
+
+`npm start` ou `yarn start`
