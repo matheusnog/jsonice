@@ -1,6 +1,6 @@
 # Sobre o projeto
 
-O projeto é um simples formatador e estilizador de JSON, feito em [React](https://react.dev/). Está hospedado no [GitHub Pages](https://docs.github.com/pt/pages/getting-started-with-github-pages/creating-a-github-pages-site) e pode ser acessado em: [matheusnog.github.io/jsonice/](matheusnog.github.io/jsonice/)
+O projeto é um simples formatador e estilizador de JSON, feito em [React](https://react.dev/). Está hospedado no [GitHub Pages](https://docs.github.com/pt/pages/getting-started-with-github-pages/creating-a-github-pages-site) e pode ser acessado em: [matheusnog.github.io/jsonice/](https://matheusnog.github.io/jsonice/)
 
 Além de retornar o JSON informado estilizado, a aplicação também salva o histórico dos JSONs informados pelo usuário, utilizando o [localStorage](https://developer.mozilla.org/pt-BR/docs/Web/API/Window/localStorage);
 

@@ -136,7 +136,7 @@ const Content = () => {
                             <HistoryIcon />
                         </Fab>
                     </div>
-                    <div className='d-flex align-items-center'>
+                    <div style={{width: '100%', height: '100%'}}>
                         {formattedJson && <JsonViewer value={formattedJson} theme={theme} />}
                     </div>
                 </Grid>
