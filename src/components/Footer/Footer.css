@@ -5,6 +5,6 @@
     right: 0;
 }
 
-.bgGray {
-    background-color: rgba(0, 0, 0, 0.2);
+.bgBlue {
+    background-color: rgb(114,192,244) !important;
 }

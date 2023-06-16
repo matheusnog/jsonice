@@ -6,7 +6,7 @@ class Footer extends React.Component {
     render() {
         return (
             <MDBFooter bgColor='light' className='text-center text-lg-left footerPosition'>
-                <div className='text-center p-3 bgGray'>
+                <div className='text-center p-3 bgBlue'>
                     &copy; {new Date().getFullYear()} Copyright:{' '}
                     <span className='text-dark'>JSONice</span>
                     <span className='text-dark'> - Matheus Nogueira</span>

@@ -96,7 +96,7 @@ const Content = () => {
                         </Typography>
                         <Fab
                             size="small"
-                            className='bgGray me-4'
+                            className='bgBlue me-4'
                             aria-label="add"
                             onClick={() => clearHistory()}
                         >
@@ -128,7 +128,7 @@ const Content = () => {
                             <DarkModeIcon />
                         </Fab>
                         <Fab
-                            className='bgGray'
+                            className='bgBlue'
                             size='small'
                             aria-label="add"
                             onClick={() => openHistoryModal()}

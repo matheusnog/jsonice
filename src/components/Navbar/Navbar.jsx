@@ -5,9 +5,9 @@ import './Navbar.css'
 class Navbar extends React.Component {
     render() {
         return (
-            <NavBootstrap className='bgGray'>
+            <NavBootstrap className='bgBlue'>
                 <Container>
-                    <NavBootstrap.Brand href="#home">JSONice</NavBootstrap.Brand>
+                    <NavBootstrap.Brand>JSONice</NavBootstrap.Brand>
                     <span>Formatador e estilizador de JSON</span>
                 </Container>
             </NavBootstrap>
