@@ -23,41 +23,43 @@ const History = ({ setJson }) => {
     return (
         <List>
             {arrayHistory.map(ak => {
-                return <ListItem key={"listitem" + ak}>
-                    <ListItemButton
-                        key={"listitembutton" + ak}
-                        color="neutral"
-                        disabled={false}
-                        selected={false}
-                        variant="soft"
-                    >
-                        <div>
-                            <span>{localStorage.getItem(ak)}</span>
-                        </div>
-                        <div style={{ marginRight: 4 }}>
-                            <Fab
-                                size="small"
-                                color='success'
-                                aria-label="add"
-                                onClick={() => loadJson(ak)}
-                            >
-                                <CheckIcon />
-                            </Fab>
-                        </div>
-                        <div>
-                            <Fab
-                                size="small"
-                                color='error'
-                                aria-label="add"
-                                onClick={() => removeJson(ak)}
-                            >
-                                <DeleteIcon />
-                            </Fab>
-                        </div>
-                    </ListItemButton>
-                </ListItem>
+                return localStorage.getItem(ak) ?
+                    < ListItem key={"listitem" + ak} >
+                        <ListItemButton
+                            key={"listitembutton" + ak}
+                            color="neutral"
+                            disabled={false}
+                            selected={false}
+                            variant="soft"
+                        >
+                            <div>
+                                <span>{localStorage.getItem(ak)}</span>
+                            </div>
+                            <div style={{ marginRight: 4 }}>
+                                <Fab
+                                    size="small"
+                                    color='success'
+                                    aria-label="add"
+                                    onClick={() => loadJson(ak)}
+                                >
+                                    <CheckIcon />
+                                </Fab>
+                            </div>
+                            <div>
+                                <Fab
+                                    size="small"
+                                    color='error'
+                                    aria-label="add"
+                                    onClick={() => removeJson(ak)}
+                                >
+                                    <DeleteIcon />
+                                </Fab>
+                            </div>
+                        </ListItemButton>
+                    </ListItem>
+                    : <></>
             })}
-        </List>
+        </List >
     )
 
 }
