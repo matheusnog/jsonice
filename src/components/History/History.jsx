@@ -32,10 +32,10 @@ const History = ({ setJson }) => {
                             selected={false}
                             variant="soft"
                         >
-                            <div>
+                            <div style={{width: '100%', overflow: 'hidden'}}>
                                 <span>{localStorage.getItem(ak)}</span>
                             </div>
-                            <div style={{ marginRight: 4 }}>
+                            <div style={{ marginLeft: 6, marginRight: 4 }}>
                                 <Fab
                                     size="small"
                                     color='success'
