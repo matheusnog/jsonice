@@ -22,43 +22,47 @@ const History = ({ setJson }) => {
 
     return (
         <List>
-            {arrayHistory.map(ak => {
-                return localStorage.getItem(ak) ?
-                    < ListItem key={"listitem" + ak} >
-                        <ListItemButton
-                            key={"listitembutton" + ak}
-                            color="neutral"
-                            disabled={false}
-                            selected={false}
-                            variant="soft"
-                        >
-                            <div style={{width: '100%', overflow: 'hidden'}}>
-                                <span>{localStorage.getItem(ak)}</span>
-                            </div>
-                            <div style={{ marginLeft: 6, marginRight: 4 }}>
-                                <Fab
-                                    size="small"
-                                    color='success'
-                                    aria-label="add"
-                                    onClick={() => loadJson(ak)}
-                                >
-                                    <CheckIcon />
-                                </Fab>
-                            </div>
-                            <div>
-                                <Fab
-                                    size="small"
-                                    color='error'
-                                    aria-label="add"
-                                    onClick={() => removeJson(ak)}
-                                >
-                                    <DeleteIcon />
-                                </Fab>
-                            </div>
-                        </ListItemButton>
-                    </ListItem>
-                    : <></>
-            })}
+            {arrayHistory.length == 0 ?
+                <div className='text-center'>
+                    <h5>Sem histórico</h5>
+                </div>
+                : arrayHistory.map((ak, index) => {
+                    return localStorage.getItem(ak) ?
+                        < ListItem key={"listitem" + ak} >
+                            <ListItemButton
+                                key={"listitembutton" + ak}
+                                color="neutral"
+                                disabled={false}
+                                selected={false}
+                                variant="soft"
+                            >
+                                <div style={{ width: '100%', overflow: 'hidden' }}>
+                                    <span>{localStorage.getItem(ak)}</span>
+                                </div>
+                                <div style={{ marginLeft: 6, marginRight: 4 }}>
+                                    <Fab
+                                        size="small"
+                                        color='success'
+                                        aria-label="add"
+                                        onClick={() => loadJson(ak)}
+                                    >
+                                        <CheckIcon />
+                                    </Fab>
+                                </div>
+                                <div>
+                                    <Fab
+                                        size="small"
+                                        color='error'
+                                        aria-label="add"
+                                        onClick={() => removeJson(ak)}
+                                    >
+                                        <DeleteIcon />
+                                    </Fab>
+                                </div>
+                            </ListItemButton>
+                        </ListItem>
+                        : <></>
+                })}
         </List >
     )
 
