@@ -38,7 +38,11 @@ const Content = () => {
                     var json_value = JSON.parse(json)
                     setFormattedJson(json_value)
                     const id = Date.now()
-                    localStorage.setItem(id, JSON.stringify(json_value))
+                    let exist = false
+                    Object.keys(localStorage).forEach(function (key) {
+                        if (localStorage.getItem(key) == json_value) exist = true
+                    });
+                    if (!exist) localStorage.setItem(id, JSON.stringify(json_value))
                 }
             }
         } catch (error) {
@@ -136,7 +140,7 @@ const Content = () => {
                             <HistoryIcon />
                         </Fab>
                     </div>
-                    <div style={{width: '100%', height: '100%'}}>
+                    <div style={{ width: '100%', height: '100%' }}>
                         {formattedJson && <JsonViewer value={formattedJson} theme={theme} />}
                     </div>
                 </Grid>
