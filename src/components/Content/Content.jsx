@@ -7,6 +7,7 @@ import { JsonViewer } from '@textea/json-viewer';
 import React, { useEffect, useState } from 'react';
 import './Content.css';
 import History from '../History/History';
+import _ from 'lodash';
 
 const styleModal = {
     position: 'absolute',
@@ -32,22 +33,26 @@ const Content = () => {
     const [btnColor, setbtnColor] = useState('#000')
 
     useEffect(() => {
-        try {
-            if (json && json !== '') {
-                if (isJsonString(json)) {
-                    var json_value = JSON.parse(json)
-                    setFormattedJson(json_value)
-                    const id = Date.now()
-                    let exist = false
-                    Object.keys(localStorage).forEach(function (key) {
-                        if (localStorage.getItem(key) == json_value) exist = true
-                    });
-                    if (!exist) localStorage.setItem(id, JSON.stringify(json_value))
+        const saveJson = setTimeout(() => {
+            try {
+                if (json && json !== '') {
+                    if (isJsonString(json)) {
+                        var json_value = JSON.parse(json)
+                        setFormattedJson(json_value)
+                        const id = Date.now()
+                        let exist = false
+                        Object.keys(localStorage).forEach(function (key) {
+                            if (_.isEqual(json_value, JSON.parse(localStorage.getItem(key)))) exist = true
+                        });
+                        if (!exist) localStorage.setItem(id, JSON.stringify(json_value))
+                    }
                 }
+            } catch (error) {
+                console.log(error)
             }
-        } catch (error) {
-            console.log(error)
-        }
+        }, 1000)
+
+        return () => clearTimeout(saveJson)
     }, [json])
 
     function isJsonString(str) {
