@@ -33,12 +33,17 @@ const Content = () => {
     const [btnColor, setbtnColor] = useState('#000')
 
     useEffect(() => {
+        var json_value = ''
+        if (json && json !== '') {
+            if (isJsonString(json)) {
+                json_value = JSON.parse(json)
+                setFormattedJson(json_value)
+            }
+        }
         const saveJson = setTimeout(() => {
             try {
                 if (json && json !== '') {
                     if (isJsonString(json)) {
-                        var json_value = JSON.parse(json)
-                        setFormattedJson(json_value)
                         const id = Date.now()
                         let exist = false
                         Object.keys(localStorage).forEach(function (key) {
@@ -50,7 +55,7 @@ const Content = () => {
             } catch (error) {
                 console.log(error)
             }
-        }, 1000)
+        }, 2000)
 
         return () => clearTimeout(saveJson)
     }, [json])
