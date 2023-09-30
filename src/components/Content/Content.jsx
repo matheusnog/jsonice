@@ -151,7 +151,12 @@ const Content = () => {
                         </Fab>
                     </div>
                     <div style={{ width: '100%', height: '100%' }}>
-                        {formattedJson && <JsonViewer value={formattedJson} theme={theme} />}
+                        {formattedJson &&
+                            <JsonViewer
+                                value={formattedJson}
+                                theme={theme}
+                            />
+                        }
                     </div>
                 </Grid>
             </Grid>
