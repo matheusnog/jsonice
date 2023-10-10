@@ -10,8 +10,8 @@
 }
 
 .boxContent {
-    align-content: end !important;
-    align-items: end !important;
+    align-content: flex-end !important;
+    align-items: flex-end !important;
     display: flex !important;
     justify-content: space-between !important;
 }
