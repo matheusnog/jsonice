@@ -8,6 +8,7 @@ import React, { useEffect, useState } from 'react';
 import './Content.css';
 import History from '../History/History';
 import _ from 'lodash';
+import toast, { Toaster } from 'react-hot-toast';
 
 const styleModal = {
     position: 'absolute',
@@ -80,6 +81,7 @@ const Content = () => {
 
     function clearHistory() {
         localStorage.clear();
+        toast.success("Limpo com sucesso!")
         showHistory()
     }
 
@@ -88,15 +90,18 @@ const Content = () => {
             setTheme('dark')
             setbtnColor('#fff')
             setbtnBackColor('#000')
+            toast("Modo escuro ativado")
         } else {
             setTheme('light')
             setbtnColor('#000')
             setbtnBackColor('#fff')
+            toast("Modo escuro desativado")
         }
     }
 
     return (
         <>
+            <Toaster />
             <Modal
                 open={modalOpen}
                 onClose={() => setModalOpen(false)}

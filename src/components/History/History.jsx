@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Fab, List, ListItem, ListItemButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CheckIcon from '@mui/icons-material/Check';
-import { ToastContainer, toast } from 'react-toastify';
+import toast from 'react-hot-toast';
 
 const History = ({ setJson }) => {
 
@@ -14,41 +14,19 @@ const History = ({ setJson }) => {
 
     function loadJson(key) {
         setJson(localStorage.getItem(key))
-        toast("Carregado com sucesso!")
+        toast.success("Carregado com sucesso!")
     }
 
     function removeJson(key) {
         localStorage.removeItem(key)
         setArrayHistory(Object.keys(localStorage))
+        toast.error("Removido com sucesso!")
     }
-
-    const notify = (message) => {
-        toast(message, {
-            position: 'bottom-right',
-            autoClose: 2000,
-            style: {
-                backgroundColor: '#fff',
-                color: '#000',
-            },
-        });
-    };
 
     return (
         <>
-            <ToastContainer
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="light"
-            />
             <List>
-                {arrayHistory.length == 0 ?
+                {arrayHistory.length === 0 ?
                     <div className='text-center'>
                         <h5>Sem histórico</h5>
                     </div>
