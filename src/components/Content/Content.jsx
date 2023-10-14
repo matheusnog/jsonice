@@ -50,7 +50,10 @@ const Content = () => {
                         Object.keys(localStorage).forEach(function (key) {
                             if (_.isEqual(json_value, JSON.parse(localStorage.getItem(key)))) exist = true
                         });
-                        if (!exist) localStorage.setItem(id, JSON.stringify(json_value))
+                        if (!exist) {
+                            localStorage.setItem(id, JSON.stringify(json_value))
+                            toast.success("Salvo. Acesse o histórico para visualizar!")
+                        }
                     }
                 }
             } catch (error) {
@@ -80,9 +83,14 @@ const Content = () => {
     }
 
     function clearHistory() {
-        localStorage.clear();
-        toast.success("Limpo com sucesso!")
-        showHistory()
+        const localStorageIsEmpty = localStorage.length === 0;
+        if (localStorageIsEmpty) {
+            toast.success("O histórico já está limpo!")
+        } else {
+            localStorage.clear();
+            toast.success("Limpo com sucesso!")
+            showHistory()
+        }
     }
 
     function changeColor() {
