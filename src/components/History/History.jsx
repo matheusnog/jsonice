@@ -4,9 +4,10 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import CheckIcon from '@mui/icons-material/Check';
 import toast from 'react-hot-toast';
 
-const History = ({ setJson }) => {
+const History = ({ setJson, json }) => {
 
     const [arrayHistory, setArrayHistory] = useState([])
+    const [currentJson, setCurrentJson] = useState(null)
 
     useEffect(() => {
         setArrayHistory(Object.keys(localStorage))
@@ -14,7 +15,20 @@ const History = ({ setJson }) => {
 
     function loadJson(key) {
         setJson(localStorage.getItem(key))
-        toast.success("Carregado com sucesso!")
+        setCurrentJson(localStorage.getItem(key))
+        if (!currentJson) {
+            if (json == localStorage.getItem(key)) {
+                toast("Esse valor já foi carregado!")
+            } else {
+                toast.success("Carregado com sucesso!")
+            }
+        } else {
+            if (currentJson == localStorage.getItem(key)) {
+                toast("Esse valor já foi carregado!")
+            } else {
+                toast.success("Carregado com sucesso!")
+            }
+        }
     }
 
     function removeJson(key) {

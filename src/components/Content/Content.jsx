@@ -79,7 +79,12 @@ const Content = () => {
     }
 
     function showHistory() {
-        setHistory(<History setJson={setJson} />)
+        setHistory(
+            <History
+                setJson={setJson}
+                json={json}
+            />
+        )
     }
 
     function clearHistory() {
