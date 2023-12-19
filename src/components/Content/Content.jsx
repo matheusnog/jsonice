@@ -2,7 +2,7 @@ import { TextareaAutosize } from '@mui/base';
 import HistoryIcon from '@mui/icons-material/History';
 import CleaningServicesIcon from '@mui/icons-material/CleaningServices';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
-import { Fab, Grid, Modal, Box, Typography } from '@mui/material';
+import { Fab, Grid, Modal, Box, Typography, Button } from '@mui/material';
 import { JsonViewer } from '@textea/json-viewer';
 import React, { useEffect, useState } from 'react';
 import './Content.css';
@@ -28,6 +28,7 @@ const Content = () => {
     const [json, setJson] = useState('')
     const [formattedJson, setFormattedJson] = useState(null)
     const [modalOpen, setModalOpen] = useState(false)
+    const [modalAttrOpen, setModalAttrOpen] = useState(false)
     const [history, setHistory] = useState('')
     const [theme, setTheme] = useState('light')
     const [btnBackColor, setbtnBackColor] = useState('#fff')
@@ -76,6 +77,10 @@ const Content = () => {
     function openHistoryModal() {
         showHistory()
         setModalOpen(true)
+    }
+
+    function openAttrModal() {
+        setModalAttrOpen(true)
     }
 
     function showHistory() {
@@ -140,6 +145,25 @@ const Content = () => {
                     </div>
                 </Box>
             </Modal>
+            <Modal
+                open={modalAttrOpen}
+                onClose={() => setModalAttrOpen(false)}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+            <Box sx={styleModal}>
+                <div className='boxContent ms-4'>
+                    <Typography id="modal-modal-title" variant="h6" component="h2">
+                        Atributos do json:
+                    </Typography>
+                </div>
+                <div className='boxContent ms-4'>
+                    [
+                    {Object.keys(formattedJson ?? '').join(',')}
+                    ]
+                </div>
+            </Box>
+        </Modal >
             <Grid direction='row' container spacing={1} className='p-3 h85'>
                 <Grid container item sm={6} className='p-3'>
                     <TextareaAutosize
@@ -178,6 +202,14 @@ const Content = () => {
                     </div>
                 </Grid>
             </Grid>
+            <div className='p-1'>
+                <Button
+                    variant="contained"
+                    onClick={() => openAttrModal()}
+                >
+                    Gerar array dos atributos
+                </Button>
+            </div>
         </>
     )
 
