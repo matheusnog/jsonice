@@ -29,6 +29,7 @@ const Content = () => {
     const [formattedJson, setFormattedJson] = useState(null)
     const [modalOpen, setModalOpen] = useState(false)
     const [modalAttrOpen, setModalAttrOpen] = useState(false)
+    const [type, setType] = useState('')
     const [history, setHistory] = useState('')
     const [theme, setTheme] = useState('light')
     const [btnBackColor, setbtnBackColor] = useState('#fff')
@@ -79,8 +80,9 @@ const Content = () => {
         setModalOpen(true)
     }
 
-    function openAttrModal() {
+    function openAttrModal(type = '') {
         setModalAttrOpen(true)
+        setType(type)
     }
 
     function showHistory() {
@@ -151,19 +153,28 @@ const Content = () => {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-            <Box sx={styleModal}>
-                <div className='boxContent ms-4'>
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
-                        Atributos do json:
-                    </Typography>
-                </div>
-                <div className='boxContent ms-4'>
-                    [
-                    {Object.keys(formattedJson ?? '').join(',')}
-                    ]
-                </div>
-            </Box>
-        </Modal >
+                <Box sx={styleModal}>
+                    <div className='boxContent ms-4'>
+                        <Typography id="modal-modal-title" variant="h6" component="h2">
+                            {type == 'attributes' ? 'Atributos' : 'Valores'} do json:
+                        </Typography>
+                    </div>
+                    {
+                        type == 'attributes' ?
+                            <div className='boxContent ms-4'>
+                                [
+                                {Object.keys(formattedJson ?? '').join(',')}
+                                ]
+                            </div>
+                            :
+                            <div className='boxContent ms-4'>
+                                [
+                                {Object.values(formattedJson ?? '').join(',')}
+                                ]
+                            </div>
+                    }
+                </Box>
+            </Modal >
             <Grid direction='row' container spacing={1} className='p-3 h85'>
                 <Grid container item sm={6} className='p-3'>
                     <TextareaAutosize
@@ -202,12 +213,21 @@ const Content = () => {
                     </div>
                 </Grid>
             </Grid>
-            <div className='p-1'>
+            <div style={{ marginLeft: '20px' }}>
                 <Button
                     variant="contained"
-                    onClick={() => openAttrModal()}
+                    onClick={() => openAttrModal('attributes')}
+                    style={{
+                        marginRight: '10px'
+                    }}
                 >
                     Gerar array dos atributos
+                </Button>
+                <Button
+                    variant="contained"
+                    onClick={() => openAttrModal('values')}
+                >
+                    Gerar array dos valores
                 </Button>
             </div>
         </>
