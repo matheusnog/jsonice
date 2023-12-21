@@ -156,23 +156,26 @@ const Content = () => {
                 <Box sx={styleModal}>
                     <div className='boxContent ms-4'>
                         <Typography id="modal-modal-title" variant="h6" component="h2">
-                            {type == 'attributes' ? 'Atributos' : 'Valores'} do json:
+                            Atributos do json:
                         </Typography>
                     </div>
-                    {
-                        type == 'attributes' ?
-                            <div className='boxContent ms-4'>
-                                [
-                                {Object.keys(formattedJson ?? '').join(',')}
-                                ]
-                            </div>
-                            :
-                            <div className='boxContent ms-4'>
-                                [
-                                {Object.values(formattedJson ?? '').join(',')}
-                                ]
-                            </div>
-                    }
+
+                    <div className='boxContent ms-4'>
+                        [
+                        {Object.keys(formattedJson ?? '').join(',')}
+                        ]
+                    </div>
+
+                    <div className='boxContent ms-4' style={{marginTop: '10px'}}>
+                        <Typography id="modal-modal-title" variant="h6" component="h2">
+                            Valores do json:
+                        </Typography>
+                    </div>
+                    <div className='boxContent ms-4'>
+                        [
+                        {Object.values(formattedJson ?? '').join(',')}
+                        ]
+                    </div>
                 </Box>
             </Modal >
             <Grid direction='row' container spacing={1} className='p-3 h85'>
@@ -221,13 +224,7 @@ const Content = () => {
                         marginRight: '10px'
                     }}
                 >
-                    Gerar array dos atributos
-                </Button>
-                <Button
-                    variant="contained"
-                    onClick={() => openAttrModal('values')}
-                >
-                    Gerar array dos valores
+                    Visão geral
                 </Button>
             </div>
         </>
