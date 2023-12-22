@@ -159,22 +159,26 @@ const Content = () => {
                             Atributos do json:
                         </Typography>
                     </div>
-
                     <div className='boxContent ms-4'>
-                        [
-                        {Object.keys(formattedJson ?? '').join(',')}
-                        ]
+                        [{Object.keys(formattedJson ?? '').join(',')}]
                     </div>
 
-                    <div className='boxContent ms-4' style={{marginTop: '10px'}}>
+                    <div className='boxContent ms-4' style={{ marginTop: '10px' }}>
                         <Typography id="modal-modal-title" variant="h6" component="h2">
                             Valores do json:
                         </Typography>
                     </div>
                     <div className='boxContent ms-4'>
-                        [
-                        {Object.values(formattedJson ?? '').join(',')}
-                        ]
+                        [{Object.values(formattedJson ?? '').join(',')}]
+                    </div>
+
+                    <div className='boxContent ms-4' style={{ marginTop: '10px' }}>
+                        <Typography id="modal-modal-title" variant="h6" component="h2">
+                            Quantidade de itens no json:
+                        </Typography>
+                    </div>
+                    <div className='boxContent ms-4'>
+                        <Typography variant="body1">{Object.keys(formattedJson ?? '').length}</Typography>
                     </div>
                 </Box>
             </Modal >
