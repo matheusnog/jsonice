@@ -18,13 +18,13 @@ const History = ({ setJson, json }) => {
         setCurrentJson(localStorage.getItem(key))
         if (!currentJson) {
             if (json === localStorage.getItem(key)) {
-                toast("Esse valor já foi carregado!")
+                toast("Esse JSON já está aberto!")
             } else {
                 toast.success("Carregado com sucesso!")
             }
         } else {
             if (currentJson === localStorage.getItem(key)) {
-                toast("Esse valor já foi carregado!")
+                toast("Esse JSON já está aberto!")
             } else {
                 toast.success("Carregado com sucesso!")
             }

@@ -154,32 +154,41 @@ const Content = () => {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={styleModal}>
-                    <div className='boxContent ms-4'>
-                        <Typography id="modal-modal-title" variant="h6" component="h2">
-                            Atributos do json:
-                        </Typography>
-                    </div>
-                    <div className='boxContent ms-4'>
-                        [{Object.keys(formattedJson ?? '').join(',')}]
-                    </div>
+                    {formattedJson ?
+                        <>
+                            <div className='boxContent ms-4'>
+                                <Typography id="modal-modal-title" variant="h6" component="h2">
+                                    Atributos do json:
+                                </Typography>
+                            </div>
+                            <div className='boxContent ms-4'>
+                                [{Object.keys(formattedJson ?? '').join(',')}]
+                            </div>
 
-                    <div className='boxContent ms-4' style={{ marginTop: '10px' }}>
-                        <Typography id="modal-modal-title" variant="h6" component="h2">
-                            Valores do json:
-                        </Typography>
-                    </div>
-                    <div className='boxContent ms-4'>
-                        [{Object.values(formattedJson ?? '').join(',')}]
-                    </div>
+                            <div className='boxContent ms-4' style={{ marginTop: '10px' }}>
+                                <Typography id="modal-modal-title" variant="h6" component="h2">
+                                    Valores do json:
+                                </Typography>
+                            </div>
+                            <div className='boxContent ms-4'>
+                                [{Object.values(formattedJson ?? '').join(',')}]
+                            </div>
 
-                    <div className='boxContent ms-4' style={{ marginTop: '10px' }}>
-                        <Typography id="modal-modal-title" variant="h6" component="h2">
-                            Quantidade de itens no json:
-                        </Typography>
-                    </div>
-                    <div className='boxContent ms-4'>
-                        <Typography variant="body1">{Object.keys(formattedJson ?? '').length}</Typography>
-                    </div>
+                            <div className='boxContent ms-4' style={{ marginTop: '10px' }}>
+                                <Typography id="modal-modal-title" variant="h6" component="h2">
+                                    Quantidade de itens no json:
+                                </Typography>
+                            </div>
+                            <div className='boxContent ms-4'>
+                                <Typography variant="body1">{Object.keys(formattedJson ?? '').length}</Typography>
+                            </div>
+                        </> :
+                        <>
+                            <div className='ms-4' style={{ textAlign: 'center' }}>
+                                Sem JSON. Informe um JSON para visualizar seus detalhes.
+                            </div>
+                        </>}
+
                 </Box>
             </Modal >
             <Grid direction='row' container spacing={1} className='p-3 h85'>
@@ -220,7 +229,7 @@ const Content = () => {
                     </div>
                 </Grid>
             </Grid>
-            <div style={{ marginLeft: '20px' }}>
+            <div style={{ textAlign: 'center' }}>
                 <Button
                     variant="contained"
                     onClick={() => openAttrModal('attributes')}
